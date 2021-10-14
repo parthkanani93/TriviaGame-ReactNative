@@ -1,6 +1,6 @@
 import {config} from './config';
 
-const getRequest = async path => {
+const getRequest = async (path: string) => {
   try {
     const params = {
       method: 'GET',

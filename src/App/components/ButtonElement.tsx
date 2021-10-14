@@ -1,9 +1,21 @@
-import React from 'react';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import React, {FunctionComponent} from 'react';
+import {
+  TouchableOpacity,
+  StyleSheet,
+  TouchableOpacityProps,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
 import {colors} from '../theme/ColorPalette';
 import TextElement from './TextElement';
 
-const ButtonElement = props => {
+interface ButtonElementProps extends TouchableOpacityProps {
+  customButtonStyle?: ViewStyle;
+  customTextStyle?: TextStyle;
+  buttonName?: String;
+}
+
+const ButtonElement: FunctionComponent<ButtonElementProps> = props => {
   const {customButtonStyle, customTextStyle, buttonName, ...rest} = props;
   return (
     <>

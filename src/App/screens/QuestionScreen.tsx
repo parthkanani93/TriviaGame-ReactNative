@@ -12,15 +12,15 @@ import {clearStorage, storeAnswer} from '../utils/AsyncStorage';
 
 const QuestionScreen = () => {
   const [loading, setLoading] = useState(false);
-  const [triviaData, setTriviaData] = useState({});
-  const [inputAnswer, setInputAnswer] = useState('');
-  const [answerError, setAnswerError] = useState('');
+  const [triviaData, setTriviaData] = useState<any>({});
+  const [inputAnswer, setInputAnswer] = useState<string>('');
+  const [answerError, setAnswerError] = useState<string>('');
 
   useEffect(() => {
     getTriviaQuestion();
   }, []);
 
-  const alert = message => {
+  const alert = (message: string) => {
     Alert.alert('Result', message, [
       {
         text: 'OK',
@@ -36,10 +36,10 @@ const QuestionScreen = () => {
   const getTriviaQuestion = async () => {
     setLoading(true);
     try {
-      const {data, statusCode} = await Api.getRequest(random.randomQuestion);
-      if (data && statusCode === 200) {
-        setTriviaData(data[0]);
-        await storeAnswer('answer', data[0]?.answer);
+      const response: any = await Api.getRequest(random.randomQuestion);
+      if (response.data && response.statusCode === 200) {
+        setTriviaData(response.data[0]);
+        await storeAnswer('answer', response.data[0]?.answer);
       }
       setLoading(false);
     } catch (e) {
@@ -53,7 +53,7 @@ const QuestionScreen = () => {
       setAnswerError('Please Enter Answer');
       return;
     }
-    const answer = await AsyncStorage.getItem('answer');
+    const answer: any = await AsyncStorage.getItem('answer');
     if (answer.toLowerCase() === inputAnswer.toLowerCase()) {
       alert('Your Answer Is correct');
     } else {

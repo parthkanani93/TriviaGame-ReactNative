@@ -1,8 +1,22 @@
-import React from 'react';
-import {Text, TextInput, StyleSheet} from 'react-native';
+import React, {FunctionComponent} from 'react';
+import {
+  Text,
+  TextInput,
+  StyleSheet,
+  TextInputProps,
+  TextStyle,
+} from 'react-native';
 import {colors} from '../theme/ColorPalette';
 
-const InputElement = props => {
+interface InputElementProps extends TextInputProps {
+  customStyle?: TextStyle;
+  placeholder?: string;
+  value?: string;
+  error?: boolean;
+  errorText?: string;
+}
+
+const InputElement: FunctionComponent<InputElementProps> = props => {
   const {value, placeholder, customStyle, error, errorText, ...rest} = props;
   return (
     <>

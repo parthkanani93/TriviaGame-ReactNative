@@ -1,7 +1,12 @@
-import React from 'react';
-import {Text, StyleSheet} from 'react-native';
+import React, {ReactNode, FunctionComponent} from 'react';
+import {Text, StyleSheet, TextProps, TextStyle} from 'react-native';
 
-const TextElement = props => {
+interface TextElementProps extends TextProps {
+  customStyle?: TextStyle;
+  children?: ReactNode;
+}
+
+const TextElement: FunctionComponent<TextElementProps> = props => {
   const {children, customStyle, ...rest} = props;
   return (
     <Text style={[styles.textStyle, customStyle]} {...rest}>

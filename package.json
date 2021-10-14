@@ -3,11 +3,22 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
+    "android": "npx react-native run-android",
+    "ios": "npx react-native run-ios",
+    "start": "npx react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postversion": "react-native-version",
+    "tsc": "tsc",
+    "clean": "rimraf build",
+    "build": "yarn run clean && yarn run tsc --",
+    "watch": "yarn run build -- -w",
+    "watchAndRunAndroid": "concurrently \"yarn run watch\" \"yarn run android\"",
+    "buildRunAndroid": "yarn run build && yarn run watchAndRunAndroid ",
+    "watchAndRunIOS": "concurrently \"yarn run watch\" \"yarn run ios\"",
+    "buildRunIOS": "yarn run build && yarn run watchAndRunIOS ",
+    "watchAndStart": "concurrently \"yarn run watch\" \"yarn run start\"",
+    "buildAndStart": "yarn run build && yarn run watchAndStart"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.9",
@@ -18,11 +29,21 @@
     "@babel/core": "^7.15.8",
     "@babel/runtime": "^7.15.4",
     "@react-native-community/eslint-config": "^3.0.1",
+    "@types/jest": "^27.0.2",
+    "@types/prop-types": "^15.7.4",
+    "@types/react": "^17.0.30",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-native": "^0.65.6",
+    "@types/react-test-renderer": "^17.0.1",
     "babel-jest": "^27.2.5",
+    "concurrently": "^6.3.0",
     "eslint": "^8.0.0",
     "jest": "^27.2.5",
     "metro-react-native-babel-preset": "^0.66.2",
-    "react-test-renderer": "17.0.2"
+    "react-test-renderer": "17.0.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.4"
   },
   "jest": {
     "preset": "react-native"

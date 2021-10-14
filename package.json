@@ -6,7 +6,7 @@
     "android": "npx react-native run-android",
     "ios": "npx react-native run-ios",
     "start": "npx react-native start",
-    "test": "jest",
+    "test": "jest --config=jest.config.js",
     "lint": "eslint .",
     "postversion": "react-native-version",
     "tsc": "tsc",
@@ -44,8 +44,5 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.5",
     "typescript": "^4.4.4"
-  },
-  "jest": {
-    "preset": "react-native"
   }
 }

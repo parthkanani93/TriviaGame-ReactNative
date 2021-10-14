@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, TextInput, StyleSheet} from 'react-native';
+import {colors} from '../theme/ColorPalette';
 
 const InputElement = props => {
   const {value, placeholder, customStyle, error, errorText, ...rest} = props;
@@ -18,14 +19,14 @@ const InputElement = props => {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    backgroundColor: 'grey',
+    backgroundColor: colors.lightGrey,
     borderRadius: 10,
     padding: 15,
   },
   errorTextStyle: {
-    color: 'red',
+    color: colors.error,
     marginTop: 10,
   },
 });
 
-export default InputElement;
+export default React.memo(InputElement);

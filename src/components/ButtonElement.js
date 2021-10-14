@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {TouchableOpacity, StyleSheet} from 'react-native';
+import {colors} from '../theme/ColorPalette';
 import TextElement from './TextElement';
 
 const ButtonElement = props => {
@@ -17,7 +18,7 @@ const ButtonElement = props => {
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    backgroundColor: 'red',
+    backgroundColor: colors.red,
     margin: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -28,4 +29,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ButtonElement;
+export default React.memo(ButtonElement);
